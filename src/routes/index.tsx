@@ -64,8 +64,7 @@ function Home() {
     `&destination=place_id:${SHOP_INFO.placeId}` +
     `&language=vi`;
 
-  const googleMapsUrl = `https://www.google.com/maps/place/?q=place_id:${SHOP_INFO.placeId}`;
-
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SHOP_INFO.name)}&query_place_id=${SHOP_INFO.placeId}`;
   return (
     <div ref={fullPageRef} className="bg-[#faf7f2] font-sans">
 
