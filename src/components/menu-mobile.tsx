@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { TypographyReveal } from "#/components/satisui/typography-reveal.tsx";
 import { CardFlip, CardFlipBack, CardFlipContent, CardFlipFront, CardFlipHeader, CardFlipTitle } from "./ui/card-flip";
 import { ImageZoom } from "#/components/image-zoom.tsx";
+import { SHOP_INFO } from "#/routes";
 
 const MenuSectionMB = () => {
   return (
@@ -12,13 +13,13 @@ const MenuSectionMB = () => {
       {/*<span id="anchor-do-an" className="absolute top-1/2 left-0" />*/}
 
       <div id='anchor-nuoc-uong-mb' className='min-h-screen bg-background pt-20 p-4'>
-        <TypographyReveal className="leading-tight">
-          This is the default reveal animation. It fades in word by word from the
-          bottom as the component scrolls into view.
+        <TypographyReveal className="leading-tight text-[#8a6a30]">
+          {SHOP_INFO.address_detail}
         </TypographyReveal>
 
         <div className='space-y-4 mt-8'>
           <motion.div
+            className='mx-auto max-w-sm w-full'
             initial={{ y: 30, opacity: 0 }}
             whileInView={{ y: 0, opacity: 1, transition: { type: 'spring' } }}
           >
@@ -29,7 +30,7 @@ const MenuSectionMB = () => {
                 </CardFlipHeader>
                 <CardFlipContent className="flex gap-x-4">
                   <ImageZoom>
-                    <img src='/menu/do-uong-1.jpg' className="w-full h-full rounded-md origin-center" alt='Menu nước mặt 1'/>
+                    <img src='/menu/1.jpg' className="w-full h-full rounded-md origin-center" alt='Menu nước mặt 1'/>
                   </ImageZoom>
                 </CardFlipContent>
               </CardFlipFront>
@@ -39,42 +40,42 @@ const MenuSectionMB = () => {
                 </CardFlipHeader>
                 <CardFlipContent>
                   <ImageZoom>
-                    <img src='/menu/do-uong-2.jpg' className="w-full h-full rounded-md origin-center" alt='Menu nước mặt 2'/>
+                    <img src='/menu/2.jpg' className="w-full h-full rounded-md origin-center" alt='Menu nước mặt 2'/>
                   </ImageZoom>
                 </CardFlipContent>
               </CardFlipBack>
             </CardFlip>
           </motion.div>
 
-          <span id="anchor-do-an-mb" className="block" />
+          {/*<span id="anchor-do-an-mb" className="block" />*/}
 
-          <motion.div
-            initial={{ y: 30, opacity: 0 }}
-            whileInView={{ y: 0, opacity: 1, transition: { type: 'spring' } }}
-          >
-            <CardFlip>
-              <CardFlipFront>
-                <CardFlipHeader>
-                  <CardFlipTitle className="cursor-pointer text-primary">Menu đồ ăn</CardFlipTitle>
-                </CardFlipHeader>
-                <CardFlipContent className="flex gap-x-4">
-                  <ImageZoom>
-                    <img src='/menu/do-an-1.jpg' className="w-full h-full rounded-md origin-center" alt='Menu đồ ăn mặt 1'/>
-                  </ImageZoom>
-                </CardFlipContent>
-              </CardFlipFront>
-              <CardFlipBack className="pb-3">
-                <CardFlipHeader>
-                  <CardFlipTitle className='text-primary'>Mặt sau</CardFlipTitle>
-                </CardFlipHeader>
-                <CardFlipContent>
-                  <ImageZoom>
-                    <img src='/menu/do-an-2.jpg' className="w-full h-full rounded-md origin-center" alt='Menu đồ ăn mặt 2'/>
-                  </ImageZoom>
-                </CardFlipContent>
-              </CardFlipBack>
-            </CardFlip>
-          </motion.div>
+          {/*<motion.div*/}
+          {/*  initial={{ y: 30, opacity: 0 }}*/}
+          {/*  whileInView={{ y: 0, opacity: 1, transition: { type: 'spring' } }}*/}
+          {/*>*/}
+          {/*  <CardFlip>*/}
+          {/*    <CardFlipFront>*/}
+          {/*      <CardFlipHeader>*/}
+          {/*        <CardFlipTitle className="cursor-pointer text-primary">Menu đồ ăn</CardFlipTitle>*/}
+          {/*      </CardFlipHeader>*/}
+          {/*      <CardFlipContent className="flex gap-x-4">*/}
+          {/*        <ImageZoom>*/}
+          {/*          <img src='/menu/do-an-1.jpg' className="w-full h-full rounded-md origin-center" alt='Menu đồ ăn mặt 1'/>*/}
+          {/*        </ImageZoom>*/}
+          {/*      </CardFlipContent>*/}
+          {/*    </CardFlipFront>*/}
+          {/*    <CardFlipBack className="pb-3">*/}
+          {/*      <CardFlipHeader>*/}
+          {/*        <CardFlipTitle className='text-primary'>Mặt sau</CardFlipTitle>*/}
+          {/*      </CardFlipHeader>*/}
+          {/*      <CardFlipContent>*/}
+          {/*        <ImageZoom>*/}
+          {/*          <img src='/menu/do-an-2.jpg' className="w-full h-full rounded-md origin-center" alt='Menu đồ ăn mặt 2'/>*/}
+          {/*        </ImageZoom>*/}
+          {/*      </CardFlipContent>*/}
+          {/*    </CardFlipBack>*/}
+          {/*  </CardFlip>*/}
+          {/*</motion.div>*/}
         </div>
       </div>
     </div>

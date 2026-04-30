@@ -180,15 +180,16 @@ body {
 }
 
 .menu-image-1::after {
-    background: url('/public/menu/do-an-1.jpg') no-repeat center/cover;
+    background: url('/public/menu/1.jpg') no-repeat center/cover;
+    /*background: url('/public/menu/do-an-1.jpg') no-repeat center/cover;*/
     position: absolute;
     inset: 0;
     content: '';
 }
 
-.menu-image-2::after {
-    background: url('/public/menu/do-an-2.jpg') no-repeat center/cover;
-    position: absolute;
-    inset: 0;
-    content: '';
-}
+/*.menu-image-2::after {*/
+/*    background: url('/public/menu/do-an-2.jpg') no-repeat center/cover;*/
+/*    position: absolute;*/
+/*    inset: 0;*/
+/*    content: '';*/
+/*}*/

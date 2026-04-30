@@ -1,6 +1,7 @@
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { useRef, useState } from "react";
 import { TypographyReveal } from "#/components/satisui/typography-reveal.tsx";
+import { SHOP_INFO } from "#/routes";
 
 const MenuSectionPC = () => {
   const menuRef = useRef<HTMLDivElement | null>(null);
@@ -32,7 +33,7 @@ const MenuSectionPC = () => {
                     transition={{ duration: 0.6, ease: 'easeOut' }}
                     className='h-full relative bg-background z-10 w-xs overflow-hidden'
                   >
-                    <img src='/menu/do-uong-1.jpg' className='w-full h-[60vh]'/>
+                    <img src='/menu/2.jpg' className='w-full h-[60vh]'/>
                   </motion.div>
                 )}
               </AnimatePresence>
@@ -40,34 +41,33 @@ const MenuSectionPC = () => {
 
             <div className="w-full flex items-center justify-center text-center">
               <TypographyReveal
+                mutedColor='#0000004d'
                 animationType="colorizeIn"
                 revealType="word"
                 start="-300px top"
-                end="+=1500"
-                className="max-w-3xl text-3xl mx-auto p-8 text-justify font-bold leading-tight @lg:text-5xl @lg:leading-tight"
+                end="+=1300"
+                className="max-w-3xl text-xl lg:text-2xl xl:text-3xl mx-auto p-8 text-justify text-[#8a6a30] font-bold leading-tight @lg:text-5xl @lg:leading-tight"
               >
-                The colorize-in animation is a scroll-linked (scrub) effect. As you
-                scroll down, the text gradually changes from a muted color to its final
-                color, creating an engaging and interactive reading experience.
+                {SHOP_INFO.address_detail}
               </TypographyReveal>
             </div>
 
-            <div className='relative h-[60vh] w-xs shrink-0 menu-image-2 shadow rounded-xl overflow-hidden'>
-              <AnimatePresence>
-                {isDrinkMenu && (
-                  <motion.div
-                    key='do-uong-2'
-                    initial={{ maxHeight: 0 }}
-                    animate={{ maxHeight: '60vh' }}
-                    exit={{ maxHeight: 0 }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
-                    className='h-full relative bg-background z-10 w-xs overflow-hidden'
-                  >
-                    <img src='/menu/do-uong-2.jpg' className='w-full h-[60vh]'/>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            {/*<div className='relative h-[60vh] w-xs shrink-0 menu-image-2 shadow rounded-xl overflow-hidden'>*/}
+            {/*  <AnimatePresence>*/}
+            {/*    {isDrinkMenu && (*/}
+            {/*      <motion.div*/}
+            {/*        key='do-uong-2'*/}
+            {/*        initial={{ maxHeight: 0 }}*/}
+            {/*        animate={{ maxHeight: '60vh' }}*/}
+            {/*        exit={{ maxHeight: 0 }}*/}
+            {/*        transition={{ duration: 0.6, ease: 'easeOut' }}*/}
+            {/*        className='h-full relative bg-background z-10 w-xs overflow-hidden'*/}
+            {/*      >*/}
+            {/*        <img src='/menu/do-uong-2.jpg' className='w-full h-[60vh]'/>*/}
+            {/*      </motion.div>*/}
+            {/*    )}*/}
+            {/*  </AnimatePresence>*/}
+            {/*</div>*/}
           </div>
         </div>
       </section>
