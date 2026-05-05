@@ -16,13 +16,18 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
-        title: 'TanStack Start Starter',
+        title: 'Quán nước Út Hạnh',
       },
     ],
     links: [
       {
         rel: 'stylesheet',
         href: appCss,
+      },
+      {
+        rel: "icon",
+        type: "image/png",
+        href: "/logo.png",
       },
     ],
   }),

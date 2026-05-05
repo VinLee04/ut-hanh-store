@@ -13,35 +13,35 @@ import { Highlighter } from "#/components/ui/highlighter.tsx";
 export const Route = createFileRoute('/')({ component: Home })
 
 export const SHOP_INFO = {
-  name: "Út Hạnh",
+  name: "Quán nước Út Hạnh",
   address: "Ấp 7, xã Phú Long, huyện Bình Đại - Bến Tre",
-  address_detail: "Hiện tại quán chỉ bán tại chỗ, không nhận ship. Hướng từ trường Lê Quý Đôn xuống Bình Đại, chạy qua trường 1 xíu sẽ thấy quán nằm phía bên trái ",
+  address_detail: "Hiện tại quán chỉ bán mang đi và chưa nhận ship tận nơi. Hướng từ trường Lê Quý Đôn xuống Bình Đại, chạy qua trường 1 xíu sẽ thấy quán nằm phía bên trái ",
   phone: "098 663 5029",
   hours: "08:00 - 22:00",
   fanpage: "https://facebook.com/tenquan",
-  placeId: "ChIJXZ63HABVdTER260NACW80_M",
+  placeId: "ChIJQ3C0LQBVdTERNCM2XBbduFo",
 };
 
-// const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY;
+const API_KEY = import.meta.env.VITE_GOOGLE_MAPS_KEY;
 
 function Home() {
   const [visible, setVisible] = useState(false);
 
-  // const [mode, setMode] = useState<"place" | "directions">("place");
-  // const [mapHovered, setMapHovered] = useState(false);
-  // const handleDirections = () => {
-  //   navigator.geolocation.getCurrentPosition(
-  //     (pos) => {
-  //       const { latitude, longitude } = pos.coords;
-  //       setUserLocation(`${latitude},${longitude}`);
-  //       setMode("directions");
-  //     },
-  //     () => {
-  //       window.open(googleMapsUrl, "_blank");
-  //     }
-  //   );
-  // };
-  // const [userLocation, setUserLocation] = useState<string | null>(null);
+  const [mode, setMode] = useState<"place" | "directions">("place");
+  const [mapHovered, setMapHovered] = useState(false);
+  const handleDirections = () => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        const { latitude, longitude } = pos.coords;
+        setUserLocation(`${latitude},${longitude}`);
+        setMode("directions");
+      },
+      () => {
+        window.open(googleMapsUrl, "_blank");
+      }
+    );
+  };
+  const [userLocation, setUserLocation] = useState<string | null>(null);
 
   const fullPageRef = useRef<HTMLDivElement | null>(null);
   const introduceRef = useRef<HTMLDivElement | null>(null);
@@ -51,21 +51,21 @@ function Home() {
     setVisible(value > 0.2);
   });
 
-  // const placeUrl =
-  //   `https://www.google.com/maps/embed/v1/place` +
-  //   `?key=${API_KEY}` +
-  //   `&q=place_id:${SHOP_INFO.placeId}` +
-  //   `&zoom=17` +
-  //   `&language=vi`;
-  //
-  // const directionsUrl =
-  //   `https://www.google.com/maps/embed/v1/directions` +
-  //   `?key=${API_KEY}` +
-  //   `&origin=${userLocation}` +
-  //   `&destination=place_id:${SHOP_INFO.placeId}` +
-  //   `&language=vi`;
-  //
-  // const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SHOP_INFO.name)}&query_place_id=${SHOP_INFO.placeId}`;
+  const placeUrl =
+    `https://www.google.com/maps/embed/v1/place` +
+    `?key=${API_KEY}` +
+    `&q=place_id:${SHOP_INFO.placeId}` +
+    `&zoom=17` +
+    `&language=vi`;
+
+  const directionsUrl =
+    `https://www.google.com/maps/embed/v1/directions` +
+    `?key=${API_KEY}` +
+    `&origin=${userLocation}` +
+    `&destination=place_id:${SHOP_INFO.placeId}` +
+    `&language=vi`;
+
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(SHOP_INFO.name)}&query_place_id=${SHOP_INFO.placeId}`;
   return (
     <div ref={fullPageRef} className="bg-[#faf7f2] font-sans">
 
@@ -104,7 +104,7 @@ function Home() {
             </a>
             <Separator orientation="vertical" className="hidden md:block h-5! w-px! bg-[#8c7850]/30!"/>
             <Link from={Route.fullPath} hashScrollIntoView={{ behavior: 'smooth' }} to='.' hash='anchor-nuoc-uong'
-                  className="hidden md:block hover:text-[#5c4a2a] transition-colors cursor-pointer">Nước Uống</Link>
+                  className="hidden md:block hover:text-[#5c4a2a] transition-colors cursor-pointer">Menu</Link>
             {/*<Link from={Route.fullPath} hashScrollIntoView={{ behavior: 'smooth' }} to='.' hash='anchor-do-an'*/}
             {/*      className="hidden md:block hover:text-[#5c4a2a] transition-colors cursor-pointer">Đồ Ăn</Link>*/}
           </div>
@@ -192,57 +192,55 @@ function Home() {
             transition={{ duration: 0.6, delay: 0.7 }}
             className="m-4 md:m-14 flex-1 text-[#9a8a70] relative rounded-2xl overflow-hidden border border-[#b4a078]/25 min-h-90 flex justify-center items-center p-4 text-base sm:text-lg md:text-base lg:text-xl text-justify italic"
           >
-            {/*<div*/}
-            {/*  className="absolute inset-0"*/}
-            {/*  onMouseEnter={() => setMapHovered(true)}*/}
-            {/*  onMouseLeave={() => setMapHovered(false)}*/}
-            {/*  onTouchStart={() => setMapHovered(true)}*/}
-            {/*  onTouchEnd={() => setTimeout(() => setMapHovered(false), 1000)}*/}
-            {/*>*/}
-            {/*  <iframe*/}
-            {/*    key={mode}*/}
-            {/*    src={mode === "place" ? placeUrl : directionsUrl}*/}
-            {/*    width="100%"*/}
-            {/*    height="100%"*/}
-            {/*    style={{ pointerEvents: mapHovered ? 'auto' : 'none' }}*/}
-            {/*    className="absolute inset-0 w-full h-full border-0"*/}
-            {/*    data-lenis-prevent*/}
-            {/*    allowFullScreen*/}
-            {/*    loading="lazy"*/}
-            {/*    referrerPolicy="no-referrer-when-downgrade"*/}
-            {/*    title="Google Maps"*/}
-            {/*  />*/}
+            <div
+              className="absolute inset-0"
+              onMouseEnter={() => setMapHovered(true)}
+              onMouseLeave={() => setMapHovered(false)}
+              onTouchStart={() => setMapHovered(true)}
+              onTouchEnd={() => setTimeout(() => setMapHovered(false), 1000)}
+            >
+              <iframe
+                key={mode}
+                src={mode === "place" ? placeUrl : directionsUrl}
+                width="100%"
+                height="100%"
+                style={{ pointerEvents: mapHovered ? 'auto' : 'none' }}
+                className="absolute inset-0 w-full h-full border-0"
+                data-lenis-prevent
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Google Maps"
+              />
 
-            {/*</div>*/}
+            </div>
 
             {/* Overlay click-to-activate – ẩn overlay "Ctrl+scroll" bằng cách
                 chặn interaction cho đến khi user chủ động hover vào */}
-            {/*{!mapHovered && (*/}
-            {/*  <div*/}
-            {/*    className="absolute inset-0 z-10 cursor-pointer"*/}
-            {/*    onClick={() => setMapHovered(true)}*/}
-            {/*  />*/}
-            {/*)}*/}
+            {!mapHovered && (
+              <div
+                className="absolute inset-0 z-10 cursor-pointer"
+                onClick={() => setMapHovered(true)}
+              />
+            )}
 
-            {/* Floating controls */}
-            {/*<div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">*/}
-            {/*  <button*/}
-            {/*    onClick={mode === "place" ? handleDirections : () => setMode("place")}*/}
-            {/*    className="px-3 sm:px-5 py-1.5 sm:py-2.5 text-nowrap rounded-full text-[10px] sm:text-[13px] font-medium bg-[#2c2118] text-[#faf7f2] hover:bg-[#3d2e1e] transition-colors shadow-lg"*/}
-            {/*  >*/}
-            {/*    {mode === "place" ? "🗺 Xem đường đi" : "📍 Xem vị trí"}*/}
-            {/*  </button>*/}
-            {/*  <a*/}
-            {/*    href={googleMapsUrl}*/}
-            {/*    target="_blank"*/}
-            {/*    rel="noopener noreferrer"*/}
-            {/*    className="px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-nowrap text-[10px] sm:text-[13px] font-medium bg-[#faf7f2]/90 text-[#5c4a2a] border border-[#8c7850]/40 hover:bg-[#faf7f2] transition-colors shadow-lg no-underline"*/}
-            {/*  >*/}
-            {/*    Mở Google Maps ↗*/}
-            {/*  </a>*/}
-            {/*</div>*/}
-
-            Đang cập nhật địa chỉ trên google map, sẽ hiển thị sau khi địa chỉ được tạo thành công
+             Floating controls
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+              <button
+                onClick={mode === "place" ? handleDirections : () => setMode("place")}
+                className="px-3 sm:px-5 py-1.5 sm:py-2.5 text-nowrap rounded-full text-[10px] sm:text-[13px] font-medium bg-[#2c2118] text-[#faf7f2] hover:bg-[#3d2e1e] transition-colors shadow-lg"
+              >
+                {mode === "place" ? "🗺 Xem đường đi" : "📍 Xem vị trí"}
+              </button>
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="px-3 sm:px-5 py-1.5 sm:py-2.5 rounded-full text-nowrap text-[10px] sm:text-[13px] font-medium bg-[#faf7f2]/90 text-[#5c4a2a] border border-[#8c7850]/40 hover:bg-[#faf7f2] transition-colors shadow-lg no-underline"
+              >
+                Mở Google Maps ↗
+              </a>
+            </div>
           </motion.div>
         </section>
 
